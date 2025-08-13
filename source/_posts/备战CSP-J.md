@@ -63,6 +63,62 @@ author: ED_Builder
 解析：在 0,1,8,6,9 中选择，然后判断回文数（因为顺序颠倒之后还要求是原来的车牌），那么我们只需要考虑第 1，2，3 位就好了  
 但是颠倒之后 6 和 9 会互换，所以第 3 位不能是 6 和 9  
 所以第一、二位有 5 种选择，第三位有 3 种选择，根据乘法原理可得最终方案数为 $5\times5\times3=75$
+## 2024 CSP-J2 T2（大模拟）
+题号：[Luogu P11228](https://luogu.com.cn/problem/P11228)
+### 题意
+给出 $n$ 行 $m$ 列的地图，机器人初始位于 $(i,j)$，朝向是 $d$，每次根据当前朝向朝对应方向步进，如果下一步越界或不是空地，那就向右转。问进行 $k$ 次操作之后，机器人走过的格子数量（包括起始位置）
+### 解析
+依题意模拟，用一个集合记录走过的格子，当机器人操作数等于 $k$ 时，输出机器人走过的格子数量，然后结束跑下一组数据即可。
+### 代码
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+bool vis[1005][1005];//走过的格子标记
+char mp[1005][1005];//地图
+int dx[]={0,1,0,-1};
+int dy[]={1,0,-1,0};//位移
+void init()
+{
+    memset(vis,false,sizeof(vis));//重置为都没被访问
+    return;
+}
+void solve()
+{
+    int n,m,k,x,y,d,ans=0;
+    cin>>n>>m>>k>>x>>y>>d;
+    vis[x][y]=true;//起始位置已被访问
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=m;j++)
+            cin>>mp[i][j];
+    for(int i=1;i<=k;i++)
+    {
+        int nxt_x=x+dx[d],nxt_y=y+dy[d];//计算下一个点
+        if(nxt_x<1||nxt_x>n||nxt_y<1||nxt_y>m||mp[nxt_x][nxt_y]=='x')
+        {
+            d=(d+1)%4;//如果越界或撞墙，就转
+            continue;
+        }
+        vis[nxt_x][nxt_y]=true;//下一个点已被访问
+        x=nxt_x,y=nxt_y;//更新到下一个点
+    }
+    for(int i=1;i<=n;i++)//统计走过的格子数量
+        for(int j=1;j<=m;j++)
+            if(vis[i][j])  ans++;
+    cout<<ans<<endl;
+    return;
+}
+int main()
+{
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        init();
+        solve();
+    }
+    return 0;
+}
+```
 # 知识积累
 ## 与或非运算
 这些操作都要在 **二进制下** 完成
@@ -274,10 +330,12 @@ n=等待排序的个数，w=数据值域
 优点：插入删除 $O(1)$  
 缺点：读取 $O(n)$ n=链表元素个数
 
-示例：  
+示例：
+```
 [prev = NULL, id = 1, value = 114, next = 514]  
 [prev = 1, id = 514, value = 1919, next = 1919]  
 [prev = 514, id = 1919, value = 810, next = NULL]
+```
 ### 图的存储
 #### 邻接矩阵
 优点：查询边权 $O(1)$
@@ -294,10 +352,9 @@ n=等待排序的个数，w=数据值域
 `++x` 先增加 x 的值，然后送出使用  
 `x++` 先送出使用，然后增加 x 的值  
 
-```cpp
-ans+=++x; = x=x+1;ans=ans+x;
-ans+=x++; = ans=ans+x;x=x+1;
-```
+{% copy ans+=++x; = x=x+1;ans=ans+x; prefix:C++%}
+{% copy ans+=x++; = ans=ans+x;x=x+1; prefix:C++%}
+
 `x++ + ++x`  
 这属于 未定义行为（Undefined Behavior, UB），在不同的编译器上可以解释为任何值。  
 这可能导致本地通过，评测报错  
