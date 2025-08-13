@@ -1,0 +1,14 @@
+name: 夏令营学习笔记
+title: Summer Camping Study Note
+description: 这是一本用来记录夏令营学习笔记的笔记本
+base_dir: /scsn/
+
+sort: 1
+per_page: 10
+license: true
+menu_id: scsn
+
+leftbar: [tagtree]
+rightbar: []
+note_leftbar: [tagtree]
+note_rightbar: [toc]
