@@ -122,7 +122,3 @@ copycode:
   js: /js/plugins/copycode.js
   default_text: '复制' # 按钮显示文字
   success_text: '复制成功' # 复制成功信息
-
-loading:
-  loading: 在加载啦，等会哦...
-  error: 坏掉啦！要不要刷新一下或者看看控制台报错？
