@@ -119,6 +119,96 @@ int main()
     return 0;
 }
 ```
+## 2021 CSP-J2 T3（字符串+模拟）
+### 题意
+给你 $n$ 台机器，分为服务器和客户端。  
+{% mark 难点%} 然后判断服务器和客户端的 IP（IPv4+端口）是否合法  
+然后服务器的 IP 必须保持唯一  
+然后客户端要和对应的 IP 建立连接，按题意输出就好了
+### 解析
+对于验证 IP 的正确性问题，我们可以将 IP 利用 string 存起来，然后利用 `sscanf` 这一利器  
+`sscanf` 的用法：`sscanf(源字符串,格式字符串,目标变量);`  
+下面是一个示例，从 `date` 字符串中按照 `%d/%d/%d %d:%d:%d` 的格式，分别提取到变量 `year` `month` `day` `hour` `minute` `second` 中：  
+`sscanf(date,"%d/%d/%d %d:%d:%d",&year,&month,&day,&hour,&minute,&second);`
+
+`sscanf` 的返回值是 **成功提取变量的数量**，例如上面那个例子中的正确返回值应该是 6，如果返回值不等于 6，就说明提取失败。  
+那么让我们带入到 IP 中，我们需要提取 5 个整数，只要返回值不是 5，立刻返回 `false` 即可  
+又看到字符串的长度 $\le25$，所以最大的整数不超过 17 位，用 `long long` 存就可以。  
+所以我们的一条判断条件就是：
+`if(sscanf(ip.c_str(),"%lld.%lld.%lld.%lld:%lld",&a,&b,&c,&d,&e)!=5)  return false;`
+
+现在我们提取到了每个整数，接下来就是判断是否合法了，依照题目判断范围即可，这一步不多说了
+
+然后我们要解决前导 0 的问题。我们可以把我们提取出来的整数拼接回去，拼成一个正确的 IP 地址，然后和读入进来的 IP 进行比较，如果相同就证明没有前导 0。  
+我们可以开一个 string，然后加起来就好了。但是因为你的整数化成字符串有点麻烦，你就可以使用 `to_string()` 函数，这属于 STL 的一种，在 C++11 被引入，OI 使用没问题。
+`string now_ip=to_string(a)+'.'+to_string(b)+'.'+to_string(c)+'.'+to_string(d)+':'+to_string(e);`
+
+---
+验证 IP 解决了，下面就是连接问题。  
+连接过程中，你需要根据客户端请求的 IP 寻找服务器 IP，然后输出对应的 ID 即可。  
+这一步我们可以使用 `map` 或 `unordered_map` 来解决，这可以减少内存的占用。
+
+我们建立 `unordered_map<string,bool> server_ip_exist` 来表示服务器 IP 是否存在，`unordered_map<string,int> server_id` 来表示服务器 IP 对应的 ID。  
+然后在读入的时候先看看当前输入的 IP 是否存在，然后就可以标记存在和记录 ID 了。
+### 代码
+```cpp
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+unordered_map<string,bool> server_ip_exist;
+unordered_map<string,int> server_id;
+bool check_ip(string ip)
+{
+    int a,b,c,d,e;
+    if(sscanf(ip.c_str(),"%lld.%lld.%lld.%lld:%lld",&a,&b,&c,&d,&e)!=5)  return false;
+    if(a<0||a>255||b<0||b>255||c<0||c>255||d<0||d>255||e<0||e>65535)  return false;
+    string now;
+    now=to_string(a)+'.'+to_string(b)+'.'+to_string(c)+'.'+to_string(d)+':'+to_string(e);
+    if(now!=ip)  return false;
+    return true;
+}
+signed main()
+{
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        string type,ip;
+        cin>>type>>ip;
+        if(type=="Server")
+        {
+            if(server_ip_exist[ip])//服务器 IP 已存在
+            {
+                cout<<"FAIL"<<endl;
+                continue;
+            }
+            if(!check_ip(ip))//IP 格式错误
+            {
+                cout<<"ERR"<<endl;
+                continue;
+            }
+            server_ip_exist[ip]=true;//标记 IP 存在
+            server_id[ip]=i;//记录 ID
+            cout<<"OK"<<endl;
+        }
+        if(type=="Client")
+        {
+            if(!check_ip(ip))//IP 格式错误
+            {
+                cout<<"ERR"<<endl;
+                continue;
+            }
+            if(!server_ip_exist[ip])//服务器 IP 不存在
+            {
+                cout<<"FAIL"<<endl;
+                continue;
+            }
+            cout<<server_id[ip]<<endl;
+        }
+    }
+    exit(0);
+}
+```
 # 知识积累
 ## 与或非运算
 这些操作都要在 **二进制下** 完成
