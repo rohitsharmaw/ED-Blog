@@ -224,21 +224,21 @@ signed main()
 {% mark 按位展开，乘权相加 %}  
 例如 $(2F)_{16}$ 转 10 进制：  
 $$
-(2F)_{16}=2\times16^1+15\times16^0=32+15=(47)_{10}
+({\color{red}2F})_{16}={\color{red}2}\times16^{\color{blue}1}+{\color{red}15}\times16^{\color{blue}0}=32+15=(47)_{10}
 $$
 在上面的式子中，$F$ 其实就是十进制里面的 $15$，这不用多说
 
 如果是带小数的部分，要 {% mark 乘负权相加%}  
 例如 $(A.F)_{16}$ 转 10 进制
 $$
-(A.F)_{16}=10\times 16^0+15\times 16^{-1}=10+\frac{15}{16^1}=(10.9375)_{10}
+({\color{red}A.F})_{16}={\color{red}10}\times 16^{\color{blue}0}+{\color{red}15}\times 16^{\color{blue}-1}=10+\frac{15}{16^1}=(10.9375)_{10}
 $$
 ### 10 进制转 x 进制
 {% mark 不断除以 x，余数倒着写，商循环利用 %}   
 例如 $(47)_{10}$ 转 16 进制
 $$
-47\div16=2\dots 15({\color{red}F})\\
-2\div16=0\dots {\color{red}2}\\
+47\div16={\color{blue}2}\dots 15({\color{red}F})\\
+{\color{blue}2}\div16={\color{green}0}\dots {\color{red}2}\\
 \therefore (47)_{10}=({\color{red}2F})_{16}
 $$
 
@@ -246,16 +246,16 @@ $$
 例如 $(114.514)_{10}$ 转 8 进制  
 那么我们先算整数部分：
 $$
-114\div 8=14\dots {\color{red}2}\\
-14\div 8=1\dots {\color{red}6}\\
-1\div 8=0\dots {\color{red}1}\\
+114\div 8={\color{blue}14}\dots {\color{red}2}\\
+{\color{blue}14}\div 8={\color{blue}1}\dots {\color{red}6}\\
+{\color{blue}1}\div 8={\color{green}0}\dots {\color{red}1}\\
 \therefore (114)_{10}=({\color{red}162})_{8}
 $$
 然后算小数部分：
 $$
 0.514\times 8={\color{red}4}.{\color{blue}112}\\
-0.{\color{blue}112}\times 8={\color{red}0}.{\color{blue}912}\\
-0.{\color{blue}912}\times 8={\color{red}7}.{\color{blue}296}\\
+{0.\color{blue}112}\times 8={\color{red}0}.{\color{blue}912}\\
+{0.\color{blue}912}\times 8={\color{red}7}.{\color{blue}296}\\
 \dots \\
 \therefore (0.514)_{10}=(0.{\color{red}407})_{8}
 $$
