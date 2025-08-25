@@ -9,6 +9,7 @@ poster:
     headline: 用户们究竟放了些什么？
 katex: true
 author: ED_Builder
+repo: ContrastyED/ED-ImgHub
 ---
 
 欢迎继续支持 [ED-ImgHub](https://imghub.ed-builder.top)，你的使用，就是我的动力

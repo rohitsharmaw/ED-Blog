@@ -59,3 +59,7 @@ footer:
 inject:
   head:
     - <link rel="stylesheet" href="https://jsd.nmmsl.top/npm/katex@0.16/dist/katex.min.css">
+
+style:
+  font-family:
+    body: 'HarmonyOS_Regular'

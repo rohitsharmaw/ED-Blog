@@ -11,3 +11,13 @@ ghuser:
   username: ContrastyED
   avatar: true
   menu: true
+
+ghrepo:
+  layout: ghrepo
+
+yiyan:
+  layout: markdown
+  title: '诗文'
+  content: |
+    <script src="https://v1.hitokoto.cn/?c=i&encode=js&select=%23hitokoto" defer=""></script>
+    <p><span id="hitokoto"></span></p>
