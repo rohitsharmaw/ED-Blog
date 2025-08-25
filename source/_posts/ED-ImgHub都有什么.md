@@ -1,13 +1,12 @@
 ---
 title: ED-ImgHub都有什么？
-date: 2025-08-25 13-04-30
+date: 2025-08-25 13:04:30
 tags: ['整活', 'ED-ImgHub']
 categories: ['公开', '分享']
 banner: https://imghub.ed-builder.top/file/Z2gtKC9G.png
 cover: https://imghub.ed-builder.top/file/Z2gtKC9G.png
 poster:
     headline: 用户们究竟放了些什么？
-    topic: 本文将放出一部分……
 katex: true
 author: ED_Builder
 ---
