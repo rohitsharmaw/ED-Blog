@@ -1,0 +1,18 @@
+welcome:
+  layout: markdown
+  title: Welcome to ED-Blog
+  # linklist:
+  #   columns: 1 
+  #   items:
+  #     - icon:
+  #       title: 
+  #       url:
+  content: |
+    刚开始建没多久，写的很烂。
+    评论系统使用了自建的 [ED-CommentAPI](https://comment.api.ed-builder.top)
+    **欢迎来 [ED-Community](https://c.ed-builder.top) 玩！**
+ghuser:
+  layout: ghuser
+  username: ContrastyED
+  avatar: true
+  menu: true
