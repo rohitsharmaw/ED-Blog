@@ -48,12 +48,9 @@ footer:
     Comments:
       icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/942ebbf1a4b91.svg"/>'
       url: https://comment.api.ed-builder.top
-    Community:
-      icon: '<img src="https://c.ed-builder.top/uploads/default/original/1X/f5a37da9c501da5da392eb85c7348f7e505e5972.svg"/>'
-      url: https://c.ed-builder.top/invites/iZkwedXQtS
-    # Github:
-    #   icon: '<img src="https://gh-mirror.ed-builder.top/favicon.ico"/>'
-    #   url: https://github.com/ContrastyED
+    Github:
+      icon: '<img src="https://gh-mirror.ed-builder.top/favicon.ico"/>'
+      url: https://github.com/rohitsharmaw
   content: | 
     本站由 [ED_Builder](/) 基于 [Hexo](https://hexo.io/) 框架构建，使用 [{theme.name} {theme.version}]({theme.tree}) 主题，利用 [Github](https://github.com/ContrastyED/ED-Blog) 存储，部署于 [Cloudflare Pages](https://pages.cloudflare.com)。
     本站所有文章除特别声明外，均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。
