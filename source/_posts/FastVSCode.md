@@ -138,3 +138,6 @@ r.sh
 ./std < in > out
 echo "Execution Completed."
 ```
+## 体验使用
+在你的 VSCode 中，把你的输入数据放到 `in` 中，代码写入 `std.cpp`，在终端运行 `./c.bat` 即可编译代码并读取数据并把输出写入 `out`  
+这个应该比 CPH 好用？在测大样例时可能会快些
