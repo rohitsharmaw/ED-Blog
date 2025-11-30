@@ -141,3 +141,148 @@ echo "Execution Completed."
 ## 体验使用
 在你的 VSCode 中，把你的输入数据放到 `in` 中，代码写入 `std.cpp`，在终端运行 `./c.bat` 即可编译代码并读取数据并把输出写入 `out`  
 这个应该比 CPH 好用？在测大样例时可能会快些
+## 环境优化
+### 主题
+强烈推荐 [Woodfish](https://marketplace.visualstudio.com/items?itemName=zhongjun.woodfish-theme) 主题  
+语法高亮推荐 [Better C++ Syntax](https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-cpp-syntax)  
+IntelliSense 补全使用官方的 [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) 就够了
+### 美化
+缩进美化可以使用 [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)，你可以在配置文件 `settings.json` 中控制每个缩进的展示颜色，格式如下：  
+```json
+  "indentRainbow.colors": [
+    "#ffc11630",
+    "#9d4edd30",
+    "#52c41a30",
+    "#0e98db30",
+    "#7db6e730",
+    "#ff922b30"
+  ],
+```
+展示效果：  
+![](https://imghub.ed-builder.top/file/aRRcSSVf.png)
+
+对于更好的大括号展示优化，可以打开原生设置，修改下方的选项：  
+![](https://imghub.ed-builder.top/file/nSo0wLZy.png)  
+同样，大括号的颜色也是支持自定义的（最多 6 个），格式如下：  
+```json
+  "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground1": "#ffc116",
+    "editorBracketHighlight.foreground2": "#9d4edd",
+    "editorBracketHighlight.foreground3": "#52c41a",
+    "editorBracketHighlight.foreground4": "#0e98db",
+    "editorBracketHighlight.foreground5": "#7db6e7",
+    "editorBracketHighlight.foreground6": "#FF922B"
+  },
+```
+
+不难看出，建议你缩进和大括号的颜色保持一致，缩进的不透明度根据自己的喜好调低。
+### 参考配置
+可能有些扩展你没有安装或激活，VSCode 版本过低，可能效果会有所偏差。  
+请根据自身的喜好进行修改
+```json
+{
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 18,
+  "explorer.confirmDelete": false,
+  "git.confirmSync": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "explorer.confirmDragAndDrop": false,
+  "git.autofetch": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "remote.portsAttributes": {
+    "25565": {
+      "protocol": "https"
+    }
+  },
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.highlightActiveIndentation": "always",
+  "workbench.tree.renderIndentGuides": "always",
+  "explorer.confirmPasteNative": false,
+  "editor.inlineSuggest.showToolbar": "always",
+  "remote.SSH.remotePlatform": {
+    "localhost": "linux"
+  },
+  "editor.fontFamily": "'JetBrains Mono'",
+  "workbench.editor.empty.hint": "hidden",
+  "window.menuBarVisibility": "classic",
+  "editor.cursorStyle": "underline",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.enableSmartCommit": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": true,
+  "editor.fontLigatures": true,
+  "workbench.auxiliaryActivityBar.location": "default",
+  "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground1": "#ffc116",
+    "editorBracketHighlight.foreground2": "#9d4edd",
+    "editorBracketHighlight.foreground3": "#52c41a",
+    "editorBracketHighlight.foreground4": "#0e98db",
+    "editorBracketHighlight.foreground5": "#7db6e7",
+    "editorBracketHighlight.foreground6": "#FF922B"
+  },
+  "indentRainbow.colors": [
+    "#ffc11630",
+    "#9d4edd30",
+    "#52c41a30",
+    "#0e98db30",
+    "#7db6e730",
+    "#ff922b30"
+  ],
+  "python.createEnvironment.trigger": "off",
+  "woodfishTheme.enableGlowEffects": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.suggest.showWords": false,
+  "woodfishTheme.enableGlassEffect": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.colorTheme": "Woodfish Dark",
+  "vscode_custom_css.imports": [],
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "json": false
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.cursorStyle": "underline",
+  "notebook.lineNumbers": "on",
+  "window.commandCenter": true,
+  "editor.minimap.showSlider": "always",
+  "editor.suggest.showStatusBar": true,
+  "editor.mouseWheelZoom": true,
+  "editor.aiStats.enabled": true,
+  "editor.autoIndentOnPaste": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "websearch.preferredEngine": "bing",
+  "github.copilot.chat.localeOverride": "zh-CN",
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.alternateGptPrompt.enabled": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.anthropic.thinking.enabled": true,
+  "github.copilot.chat.anthropic.tools.websearch.enabled": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled": true,
+  "github.copilot.chat.tools.memory.enabled": true,
+  "C_Cpp.copilotHover": "enabled",
+  "chat.checkpoints.showFileChanges": true
+}
+```
+**请在应用配置前仔细阅读**，ED_Builder 不保证可用性，如果你乱玩搞坏了别来找我
